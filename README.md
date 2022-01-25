@@ -1,6 +1,6 @@
 # 7 Segment Display
 
-Controlling a 7 Segment Display with a shift-register and an Arduino
+Controlling a 7 segment display with a shift-register and an Arduino
 
 
 https://user-images.githubusercontent.com/69637133/151025744-3b9ace1f-1e27-4980-a5d0-f443e0f0b6f0.mp4
