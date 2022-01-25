@@ -1,31 +1,15 @@
 #include <Arduino.h>
 
-
-// int dataPin = 4;
-// int latchPin = 5;
-// int clockPin = 6;
-
-
-// Pin mapping:
-
-int DATA = 4; // data pin
-int RCLK = 5; // latchpin  Register Clock (on the rising edge of this clock the data is moved to the output register)
-int SRCLK = 6; // shift bits into the register, must be high
-
-//int SRCLR_ = 2;  set all pins to 0 at once = reset = LOW, else = HIGH MASTER_RESET ... (pulled permanently high)
+int dataPin = 4; // data pin
+int latchPin = 5; // RCLK latchpin Register Clock (on the rising edge of this clock the data is moved to the output register)
+int clockPin = 6; // SRCLK shift bits into the register, must be high
+//SRCLR - Master Reset pin: set all pins to 0 at once (RESET = LOW) ... not set in this example and pulled permanently high 
 
 void setup() {
-  // put your setup code here, to run once:
-  pinMode(DATA, OUTPUT);
-  pinMode(RCLK, OUTPUT);
-  pinMode(SRCLK, OUTPUT);
-  // pinMode(SRCLR_, OUTPUT);
-
-
-  Serial.begin(9600); // Open a serial port
-  // Clear all data and switch of all output
-  // digitalWrite(G_, LOW);   // Switch off the register output
-  // digitalWrite(SRCLR_, LOW);   // Clear the shift register
+  pinMode(dataPin, OUTPUT);
+  pinMode(latchPin, OUTPUT);
+  pinMode(clockPin, OUTPUT);
+  Serial.begin(9600); 
 }
 
 byte code = B00000000;
@@ -59,27 +43,21 @@ int myArray[] = {
 };
 
 
-// Functions:
-
 void switch_on() {
 
-  digitalWrite(RCLK, HIGH);   // Move shift register to output
+  digitalWrite(latchPin, HIGH);   // Move shift register to output
     delay(1);
-  digitalWrite(RCLK, LOW);    // Reset shift register output
+  digitalWrite(latchPin, LOW);    // Reset shift register output
  
 }
 
-
 void loop() {
-
-
 
 for (int i =0; i < sizeof myArray/sizeof myArray[0]; i++)
 {
   int code = myArray[i];
 
-  shiftOut(DATA, SRCLK, MSBFIRST, code);
-
+  shiftOut(dataPin, clockPin, MSBFIRST, code);
   switch_on(); // Move register content to output
   switch_on();
   delay(300);
