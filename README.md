@@ -16,8 +16,8 @@ https://user-images.githubusercontent.com/69637133/151025744-3b9ace1f-1e27-4980-
 
 ## References
 
-* [Wiring diagram](/references/Wiring_diagram.png)
-* [Schematics](/references/schematics.png)
+* [Wiring diagram](https://github.com/codymcelroy/7segment_Display/blob/main/references/Wiring_Diagram.png)
+* [Schematics](https://github.com/codymcelroy/7segment_Display/blob/main/references/Schematics.PNG)
 * [Segment Characters and Values](https://github.com/codymcelroy/7segment_Display/blob/main/references/Segments%20Characters%20and%20Values.PNG)
 
 
